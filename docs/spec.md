@@ -160,7 +160,7 @@ Policy note: always return `requires_approval` on the first call (DESTRUCTIVE ru
 ```
 Auth = `X-Agent-Key` header, checked by middleware, no OAuth in v0.1.
 
-## 6. Policy engine rules (not built yet — needed before `create_order`)
+## 6. Policy engine rules — ✅ implemented
 
 ```
 READ        → always allowed if scope present

@@ -90,7 +90,7 @@ codebases rot.
 ## Build order (what's left, in order)
 1. ~~`search_items` (READ, same pattern as `search_restaurants`)~~ ✅ done
 2. ~~Agent identity model + `X-Agent-Key` auth (in-memory agents, no DB yet)~~ ✅ done — `app/auth/agent_auth.py`, not yet wired to any route since no capability requires auth until step 4
-3. Policy engine (category rules + spending limit)
+3. ~~Policy engine (category rules + spending limit)~~ ✅ done — `app/policy/engine.py`, `check_policy()`. Also not wired to a route yet — nothing to enforce until `create_order` exists
 4. `create_order` (FINANCIAL — first capability needing persistence, add SQLAlchemy + a DB here)
 5. `track_order`, `cancel_order`
 6. Action logging (`action_logs` table + `GET /logs`)

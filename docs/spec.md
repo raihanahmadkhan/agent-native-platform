@@ -148,7 +148,7 @@ Policy note: if `total_amount` exceeds the agent's spending limit, return
 **Output** `{ "order_id": "string", "status": "string" }`
 Policy note: always return `requires_approval` on the first call (DESTRUCTIVE rule).
 
-## 5. Agent identity (not built yet — needed before `create_order`)
+## 5. Agent identity — ✅ implemented
 
 ```json
 {

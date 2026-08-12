@@ -41,7 +41,9 @@ agent-native-platform/
 │   │   ├── schemas/             # Pydantic request/response — mirrors spec.md
 │   │   ├── capabilities/         # ONE FILE PER CAPABILITY — business logic
 │   │   ├── routers/               # thin HTTP layer only
-│   │   └── data/                   # in-memory fixtures for now (DB comes later)
+│   │   ├── auth/                   # X-Agent-Key identity dependency (who is this agent)
+│   │   ├── policy/                  # category rules + spending limit (not built yet — is this agent allowed)
+│   │   └── data/                     # in-memory fixtures for now (DB comes later)
 │   ├── tests/                       # one test file per capability
 │   ├── requirements.txt
 │   └── .env.example
@@ -87,7 +89,7 @@ codebases rot.
 
 ## Build order (what's left, in order)
 1. ~~`search_items` (READ, same pattern as `search_restaurants`)~~ ✅ done
-2. Agent identity model + `X-Agent-Key` auth middleware (in-memory agents, no DB yet)
+2. ~~Agent identity model + `X-Agent-Key` auth (in-memory agents, no DB yet)~~ ✅ done — `app/auth/agent_auth.py`, not yet wired to any route since no capability requires auth until step 4
 3. Policy engine (category rules + spending limit)
 4. `create_order` (FINANCIAL — first capability needing persistence, add SQLAlchemy + a DB here)
 5. `track_order`, `cancel_order`

@@ -54,9 +54,23 @@ Don't jump to `create_order` before identity + policy exist — `create_order` i
 FINANCIAL and needs the policy engine to enforce spending limits correctly.
 
 ## Things deliberately NOT implemented yet (don't build silently)
-Real payments, full OAuth, multiple services, a dashboard UI, caching, rate
-limiting, horizontal scaling. If a task seems to need one of these, flag it
-instead of building it.
+Real payments, full OAuth, multi-tenant capability registration, an observability
+dashboard UI, caching, rate limiting, horizontal scaling. If a task seems to need
+one of these, flag it instead of building it.
+
+## Scope decisions already settled (don't relitigate)
+
+1. **This is ONE service, not a platform other developers plug into.** The
+   manifest format happens to be service-agnostic, and that's a fine thing to
+   claim in the README — but multi-tenant registration is explicitly out of
+   scope. Do not build a generic capability-registration SDK.
+2. **The `storefront/` IS in scope** (build order step 7). It is a human-facing
+   browser UI and the control group for the benchmark — it is NOT the
+   "dashboard UI" ruled out above (that means an agent-metrics dashboard).
+   Keep it minimal and ugly on purpose.
+3. **Added complexity goes into capability parameters, not new capabilities.**
+   The 5-capability limit in `docs/spec.md` is firm. A new filter is a new
+   optional field on an existing input schema.
 
 ## When unsure
 Prefer a `# TODO:` comment or a direct question over guessing at scope.
